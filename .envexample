@@ -1,2 +1,2 @@
 PORT=3000
-DB_CONNECTION="mongodb://<user>:<password>@<server>:<port>/<instance>"
+MONGODB_URI="mongodb://<user>:<password>@<server>:<port>/<instance>"
