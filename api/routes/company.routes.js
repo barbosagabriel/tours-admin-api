@@ -1,13 +1,22 @@
-module.exports = (app) => {
-    const company = require('../controllers/company.controller.js');
+'use strict';
 
-    app.post('/company', company.create);
+var express = require('express');
+var companyController = require('../controllers/company.controller.js');
 
-    app.get('/company', company.findAll);
+(function() {
 
-    app.get('/company/:companyId', company.findOne);
+	var _route = function() {
+		var router = express.Router();
 
-    app.put('/company/:companyId', company.update);
+		router.post('/', companyController.create);
+		router.get('/', companyController.findAll);
+		router.get('/:companyId', companyController.findOne);
+		router.put('/:companyId', companyController.update);
+		router.delete('/:companyId', companyController.delete);
 
-    app.delete('/company/:companyId', company.delete);
-}
+		return router;
+	};
+
+	module.exports = _route;
+
+})();

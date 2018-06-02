@@ -25,7 +25,7 @@ app.get('/', function(req, res) {
     res.json({"status": "API Online"});
 });
 
-require('./api/routes/company.routes.js')(app);
+require('./api/routes/routes.js')(app);
 
 app.listen(dbConfig.port, function() {
     console.log("Server is listening on port " + dbConfig.port);
