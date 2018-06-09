@@ -1,5 +1,9 @@
-const companyRoute = require('./company.routes.js');
+var companyRoutes = require('./company.routes.js');
+var customerRoutes = require('./customer.routes.js');
+//var userRoutes = require('./user.routes.js');
 
-module.exports = (app) => {
-    app.use('/company', companyRoute());
+module.exports = function(app) {
+    app.use('/company', companyRoutes());
+    app.use('/customer', customerRoutes());
+  //  app.use('/user', userRoutes());
 }
