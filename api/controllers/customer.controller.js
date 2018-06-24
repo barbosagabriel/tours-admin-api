@@ -144,7 +144,7 @@ exports.delete = function(req, res) {
           message: "Customer not found with id " + req.params.id
         });
       }
-      res.send({ message: "Customer deleted successfully!" });
+      res.status(200).send({ message: "Customer deleted successfully!" });
     })
     .catch(function(err) {
       if (err.kind === "ObjectId" || err.name === "NotFound") {
