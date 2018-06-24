@@ -13,7 +13,7 @@ var UserSchema = mongoose.Schema({
 });
 
 UserSchema.virtual('initials').get(function() {
-    var names = name.split(" ");
+    var names = this.name.split(" ");
     
     if(names.length > 0){
         var firstNameLetter = names[0].substring(0,1);
