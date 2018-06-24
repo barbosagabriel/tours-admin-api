@@ -5,6 +5,8 @@ var UserSchema = mongoose.Schema({
     email: String,
     password: String,
     role: String,
+    image: String,
+    initials: String,
     company: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Company'

@@ -11,7 +11,8 @@ exports.create = function(req, res) {
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
-    company: req.body.company
+	company: req.body.company,
+	initials: req.body.initials
   });
 
   user
@@ -63,41 +64,35 @@ exports.findOne = function(req, res) {
 };
 
 exports.update = function(req, res) {
-  if (!req.body.name) {
-    return res.status(400).send({
-      message: "User email can not be empty"
-    });
-  }
-
-  User.findByIdAndUpdate(
-    req.params.id,
-    {
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password,
-        company: req.body.company
-    },
-    { new: true }
-  )
-    .then(function(user) {
-      if (!user) {
-        return res.status(404).send({
-          message: "User not found with id " + req.params.id
-        });
-      }
-      res.send(user);
-    })
-    .catch(function(err) {
-      if (err.kind === "ObjectId") {
-        return res.status(404).send({
-          message: "User not found with id " + req.params.id
-        });
-      }
-      return res.status(500).send({
-        message: "Error updating User with id " + req.params.id
-      });
-    });
-};
+  
+    var userObj = {};
+	if(req.body.name) userObj.name = req.body.name;
+    if(req.body.email) userObj.email = req.body.email;
+    if(req.body.password) userObj.password = req.body.password;
+    if(req.body.image) userObj.image = req.body.image;
+    if(req.body.company) userObj.company = req.body.company;
+    if(req.body.initials) userObj.initials = req.body.initials;
+  
+	User.findByIdAndUpdate(req.params.id, userObj, { new: true, upsert: true })
+		.then(function(user) {
+			if (!user) {
+				return res.status(404).send({
+					message: "User not found with id " + req.params.id
+				});
+			}
+			res.send(user);
+		})
+		.catch(function(err) {
+			if (err.kind === "ObjectId") {
+				return res.status(404).send({
+					message: "User not found with id " + req.params.id
+				});
+			}
+				return res.status(500).send({
+					message: "Error updating User with id " + req.params.id
+				});
+		});
+	};
 
 exports.delete = function(req, res) {
   User.findByIdAndRemove(req.params.id)

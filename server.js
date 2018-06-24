@@ -5,7 +5,7 @@ var cors = require('cors');
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
+app.use(bodyParser.json({limit: '5mb'}))
 app.use(cors([{origin: 'http://localhost:8080'}, {origin: 'https://tours-admin.herokuapp.com'}]));
 
 const dbConfig = require('./config/database.config.js');
