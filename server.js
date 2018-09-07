@@ -14,12 +14,12 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 mongoose.connect(dbConfig.url)
-.then(function() {
-    console.log("Successfully connected to the database");    
-}).catch(function(err) {
-    console.log('Could not connect to the database. Exiting now...');
-    process.exit();
-});
+            .then(function() {
+                console.log("Successfully connected to the database");    
+            }).catch(function(err) {
+                console.log('Could not connect to the database. Exiting now...');
+                process.exit();
+            });
 
 app.get('/', function(req, res) {
     res.json({"status": "API Online"});
