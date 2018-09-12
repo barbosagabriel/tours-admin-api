@@ -11,6 +11,7 @@ var ticketController = require('../controllers/ticket.controller.js');
 		router.get('/', ticketController.findAll);
 		router.get('/company/:id', ticketController.findAllByCompany);
 		router.get('/:id', ticketController.findOne);
+		router.get('/:id/pdf', ticketController.getPdf);
 		router.put('/:id', ticketController.update);
 		router.delete('/:id', ticketController.delete);
 

@@ -9,6 +9,7 @@ exports.create = function(req, res) {
 
 	const service = new Service({
 		name: req.body.name,
+		shortDescription: req.body.shortDescription,
 		description: req.body.description,
 		price: req.body.price,
 		company: req.body.company,

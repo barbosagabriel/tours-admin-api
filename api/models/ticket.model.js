@@ -8,6 +8,10 @@ var TicketSchema = mongoose.Schema({
     subTotal: Number,
     discount: Number,
     total: Number,
+    extraInformation:  String,
+    notes: String,
+    paymentInformation: String,
+    customerHotel: String,
     company: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Company'
