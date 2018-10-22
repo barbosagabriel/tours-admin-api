@@ -23,6 +23,9 @@ UserSchema.virtual('initials').get(function() {
     }else{
         return '';
     }
+},
+{
+  timestamps: true
 });
 
 UserSchema.set('toObject', {

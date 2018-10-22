@@ -22,7 +22,9 @@ exports.create = function(req, res) {
     phone2: req.body.phone2,
     state: req.body.state,
     website: req.body.website,
-    zipcode: req.body.zipcode
+    zipcode: req.body.zipcode,
+    goalCustomersPerMonth: req.body.goalCustomersPerMonth,
+    goalTicketsPerMonth: req.body.goalTicketsPerMonth
   });
 
   company
@@ -97,7 +99,9 @@ exports.update = function(req, res) {
       phoneSecondary: req.body.phoneSecondary,
       state: req.body.state,
       website: req.body.website,
-      zipcode: req.body.zipcode
+      zipcode: req.body.zipcode,
+      goalCustomersPerMonth: req.body.goalCustomersPerMonth,
+      goalTicketsPerMonth: req.body.goalTicketsPerMonth
     },
     { new: true }
   )

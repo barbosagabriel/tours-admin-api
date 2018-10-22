@@ -32,6 +32,9 @@ var TicketSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Service'
     }
+},
+{
+  timestamps: true
 });
 
 TicketSchema.plugin(autoIncrement, { inc_field: 'number' });

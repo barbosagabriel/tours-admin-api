@@ -16,11 +16,12 @@ var CompanySchema = mongoose.Schema(
     phoneSecondary: String,
     state: String,
     website: String,
-    zipcode: String
+    zipcode: String,
+    goalCustomersPerMonth: Number,
+    goalTicketsPerMonth: Number
   },
   {
     timestamps: true
-  }
-);
+  });
 
 module.exports = mongoose.model('Company', CompanySchema);

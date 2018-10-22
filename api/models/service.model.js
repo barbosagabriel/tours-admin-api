@@ -9,6 +9,9 @@ var ServiceSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Company'
     }
+},
+{
+  timestamps: true
 });
 
 module.exports = mongoose.model('Service', ServiceSchema);
