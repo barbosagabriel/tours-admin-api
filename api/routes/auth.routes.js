@@ -1,17 +1,16 @@
-'use strict';
+"use strict";
 
-var express = require('express');
-var authController = require('../controllers/auth.controller.js');
+var express = require("express");
+var authController = require("../controllers/auth.controller.js");
 
 (function() {
-	var _route = function() {
-		var router = express.Router();
+  var _route = function() {
+    var router = express.Router();
 
-		router.post('/login', authController.login);
+    router.post("/login", authController.login);
 
-		return router;
-	};
+    return router;
+  };
 
-	module.exports = _route;
-
+  module.exports = _route;
 })();

@@ -11,7 +11,7 @@ exports.create = function(req, res) {
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
-	company: req.body.company,
+    company: req.body.company
   });
 
   user
@@ -21,8 +21,7 @@ exports.create = function(req, res) {
     })
     .catch(function(err) {
       res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the user."
+        message: err.message || "Some error occurred while creating the user."
       });
     });
 };
@@ -34,8 +33,7 @@ exports.findAll = function(req, res) {
     })
     .catch(function(err) {
       res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving users."
+        message: err.message || "Some error occurred while retrieving users."
       });
     });
 };
@@ -63,32 +61,32 @@ exports.findOne = function(req, res) {
 };
 
 exports.update = function(req, res) {
-    var userObj = {};
-	if(req.body.name) userObj.name = req.body.name;
-    if(req.body.email) userObj.email = req.body.email;
-    if(req.body.password) userObj.password = req.body.password;
-    if(req.body.image) userObj.image = req.body.image;
-    if(req.body.company) userObj.company = req.body.company;
-  
-	User.findByIdAndUpdate(req.params.id, userObj, { new: true, upsert: true })
-		.then(function(user) {
-			if (!user) {
-				return res.status(404).send({
-					message: "User not found with id " + req.params.id
-				});
-			}
-			res.send(user);
-		})
-		.catch(function(err) {
-			if (err.kind === "ObjectId") {
-				return res.status(404).send({
-					message: "User not found with id " + req.params.id
-				});
-			}
-				return res.status(500).send({
-					message: "Error updating User with id " + req.params.id
-				});
-		});
+  var userObj = {};
+  if (req.body.name) userObj.name = req.body.name;
+  if (req.body.email) userObj.email = req.body.email;
+  if (req.body.password) userObj.password = req.body.password;
+  if (req.body.image) userObj.image = req.body.image;
+  if (req.body.company) userObj.company = req.body.company;
+
+  User.findByIdAndUpdate(req.params.id, userObj, { new: true, upsert: true })
+    .then(function(user) {
+      if (!user) {
+        return res.status(404).send({
+          message: "User not found with id " + req.params.id
+        });
+      }
+      res.send(user);
+    })
+    .catch(function(err) {
+      if (err.kind === "ObjectId") {
+        return res.status(404).send({
+          message: "User not found with id " + req.params.id
+        });
+      }
+      return res.status(500).send({
+        message: "Error updating User with id " + req.params.id
+      });
+    });
 };
 
 exports.delete = function(req, res) {

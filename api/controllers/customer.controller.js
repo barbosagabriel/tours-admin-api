@@ -53,7 +53,7 @@ exports.findAll = function(req, res) {
 };
 
 exports.findAllByCompany = function(req, res) {
-  Customer.find({company: req.params.id})
+  Customer.find({ company: req.params.id })
     .then(function(customers) {
       res.send(customers);
     })

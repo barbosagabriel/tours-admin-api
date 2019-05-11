@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 
 var CompanySchema = mongoose.Schema(
   {
@@ -22,6 +22,7 @@ var CompanySchema = mongoose.Schema(
   },
   {
     timestamps: true
-  });
+  }
+);
 
-module.exports = mongoose.model('Company', CompanySchema);
+module.exports = mongoose.model("Company", CompanySchema);

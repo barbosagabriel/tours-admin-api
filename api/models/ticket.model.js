@@ -1,42 +1,44 @@
-var mongoose = require('mongoose');
-const autoIncrement = require('mongoose-sequence')(mongoose)
+var mongoose = require("mongoose");
+const autoIncrement = require("mongoose-sequence")(mongoose);
 
-var TicketSchema = mongoose.Schema({
+var TicketSchema = mongoose.Schema(
+  {
     number: Number,
     date: Date,
     participants: Number,
     subTotal: Number,
     discount: Number,
     total: Number,
-    extraInformation:  String,
+    extraInformation: String,
     notes: String,
     paymentInformation: String,
     customerHotel: String,
     company: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Company'
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Company"
     },
     customer: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Customer'
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Customer"
     },
     guide: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
     },
     responsible: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
     },
     service: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Service'
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Service"
     }
-},
-{
-  timestamps: true
-});
+  },
+  {
+    timestamps: true
+  }
+);
 
-TicketSchema.plugin(autoIncrement, { inc_field: 'number' });
+TicketSchema.plugin(autoIncrement, { inc_field: "number" });
 
-module.exports = mongoose.model('Ticket', TicketSchema);
+module.exports = mongoose.model("Ticket", TicketSchema);

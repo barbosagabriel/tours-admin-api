@@ -1,6 +1,7 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 
-var CustomerSchema = mongoose.Schema({
+var CustomerSchema = mongoose.Schema(
+  {
     name: String,
     firstName: String,
     lastName: String,
@@ -17,12 +18,13 @@ var CustomerSchema = mongoose.Schema({
     state: String,
     country: String,
     company: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Company'
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Company"
     }
-},
-{
-  timestamps: true
-});
+  },
+  {
+    timestamps: true
+  }
+);
 
-module.exports = mongoose.model('Customer', CustomerSchema);
+module.exports = mongoose.model("Customer", CustomerSchema);

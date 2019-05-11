@@ -1,23 +1,20 @@
-'use strict';
-
-var express = require('express');
-var ticketController = require('../controllers/ticket.controller.js');
+var express = require("express");
+var ticketController = require("../controllers/ticket.controller.js");
 
 (function() {
-	var _route = function() {
-		var router = express.Router();
+  var _route = function() {
+    var router = express.Router();
 
-		router.post('/', ticketController.create);
-		router.get('/', ticketController.findAll);
-		router.get('/company/:id', ticketController.findAllByCompany);
-		router.get('/:id', ticketController.findOne);
-		router.get('/:id/pdf', ticketController.getPdf);
-		router.put('/:id', ticketController.update);
-		router.delete('/:id', ticketController.delete);
+    router.post("/", ticketController.create);
+    router.get("/", ticketController.findAll);
+    router.get("/company/:id", ticketController.findAllByCompany);
+    router.get("/:id", ticketController.findOne);
+    router.get("/:id/pdf", ticketController.getPdf);
+    router.put("/:id", ticketController.update);
+    router.delete("/:id", ticketController.delete);
 
-		return router;
-	};
+    return router;
+  };
 
-	module.exports = _route;
-
+  module.exports = _route;
 })();
