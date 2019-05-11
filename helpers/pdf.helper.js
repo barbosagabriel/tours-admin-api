@@ -44,7 +44,7 @@ var pdfHelper = function(){
             var stringDoc = JSON.stringify(docDefinition);
     
             tags.forEach(tag => {
-                tag.value = tag.value.toString().replace(/\r?\n|\r/g, '');
+                tag.value = tag.value.toString().replace(/\r?\n|\r/g, '\\n');
                 stringDoc = stringDoc.replace(tag.key, tag.value);
             });
     
